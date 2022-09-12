@@ -1,12 +1,11 @@
 package com.javadevjournal;
 
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
+public interface UserService {
 
-public class UserService {
-
-	public void register(User userData) {
-		// TODO Auto-generated method stub
-		
-	}
+	 void register(final UserData user) throws UserAlreadyExistException;
+	    boolean checkIfUserExist(final String email);
+	    void sendRegistrationConfirmationEmail(final UserEntity user);
+	    boolean verifyUser(final String token);
+	    UserEntity getUserById(final String id);
 
 }
