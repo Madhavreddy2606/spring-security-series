@@ -1,7 +1,6 @@
 package com.javadevjournal;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,12 +17,12 @@ public class RegistrationController {
 
     @GetMapping("/register")
     public String register(final Model model){
-        model.addAttribute("userData", new User());
+        model.addAttribute("userData", new UserData());
         return "account/register";
     }
 
     @PostMapping("/register")
-    public String userRegistration(final @Validated  User userData, final BindingResult bindingResult, final Model model) throws UserAlreadyExistException{
+    public String userRegistration(final @Validated  UserData userData, final BindingResult bindingResult, final Model model) throws UserAlreadyExistException{
         if(bindingResult.hasErrors()){
             model.addAttribute("registrationForm", userData);
             return "account/register";
